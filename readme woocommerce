@@ -1,0 +1,118 @@
+## Compatibilidade
+
+- Compatível com WooCommerce 3.0+.
+- Testado e desenvolvido com base na API v.2 e v.3 do PagSeguro;
+- Compatível com PHP 5.4.x à 7.x.x;
+- Requer a biblioteca cURL ativa na hospedagem.
+- Obrigatório o uso de certificado SSL com o protocolo TLS 1.2;
+
+## Instalação
+
+Envie os arquivos do plugin para o seu diretório de plugins (/wp-content/plugins/) ou instale usando a ferramenta de "Adicionar novo plugin" do WordPress.
+Na área de plugins do WordPress, ative o módulo PagSeguro for WooCommerce
+
+![](https://user-images.githubusercontent.com/22198227/61637058-3f01b500-ac6d-11e9-8275-8446f9a29954.png "Instalação")
+
+## Configuração
+
+---
+#### 1 - Ativação
+
+##### E-mail & Token
+
+A Ativação, E-mail & Token são os primeiros passos para tornar a sua integração funcional. Após se cadastrar e formalizar a contratação do serviço junto ao PagSeguro, você receberá um Token que será utilizado para referenciar a sua conta e validar os pagamentos processados.
+
+Com os dados em mãos basta selecionar o Ambiente PagSeguro como Produção e em seguida, e copiar e colar o seu E-mail e o seu Token nos campos indicados abaixo.
+
+![](https://user-images.githubusercontent.com/22198227/61637062-3f01b500-ac6d-11e9-8244-49de6ff06783.png "Configuração - Ativação, E-mail & Token")
+
+---
+#### 2 - Opções de Pagamento
+
+O módulo disponibiliza 3 opções de pagamento via Checkout Transparente:
+
+- Cartão de Crédito
+
+![](https://user-images.githubusercontent.com/22198227/61637061-3f01b500-ac6d-11e9-83ab-7bca6c39450d.png "Configuração - Opções de Pagamento - Cartão de Crédito")
+
+- Boleto Bancário
+
+![](https://user-images.githubusercontent.com/22198227/61637059-3f01b500-ac6d-11e9-97dd-7f7ae1be38ba.png "Configuração - Opções de Pagamento - Boleto Bancário")
+
+- Transferência
+
+![](https://user-images.githubusercontent.com/22198227/61637074-40cb7880-ac6d-11e9-8a42-47931de33152.png "Configuração - Opções de Pagamento - Débito online")
+
+Habilite os checkbox dos métodos desejados e configure os campos:
+
+![](https://user-images.githubusercontent.com/22198227/61637075-40cb7880-ac6d-11e9-9c1e-87737ac73d65.png "Configuração - Opções de Pagamento")
+
+---
+#### 3 - Parcelamento
+
+Defina o máximo de parcelas aceitas pela loja, selecione entre 1 e 12 parcelas.
+
+Defina a quantidade de Parcelas Sem Juros, selecione entre 1 e 12 parcelas.
+
+![](https://user-images.githubusercontent.com/22198227/61637064-3f9a4b80-ac6d-11e9-8064-41620175e0c8.png "Configuração - Parcelamento")
+
+**`Observação:`**
+
+A taxa de juros pode variar de acordo com o teto de faturamento da loja ou a sua negociação contratual junto ao PagSeguro.
+
+---
+#### 4 - Boleto Bancário
+
+Caso o boleto bancário esteja configurado no PagSeguro para cobrar taxa do cliente, o PagSeguro irá cobrar uma taxa de R$ 1,00 no pagamento via Boleto. Para notificar ao cliente sobre esta taxa, ative a opção Exibir Mensagem de Taxa no Boleto.
+
+Na opção Mensagem de Checkout do Boleto, defina a mensagem que será exibida ao cliente no pagamento via boleto, exemplo: "Após a confirmação do pedido, lembre-se de quitar o boleto o mais rápido possível."
+
+Na opção "Tipo de Desconto do Boleto" você pode definir se o Boleto Bancário irá receber um desconto em percentual ou valor fixo, além da opção "Nenhum".
+
+Após definir o tipo de desconto aplicado no Boleto Bancário basta definir o Valor de Desconto do Boleto, exemplo: 5.00.
+
+![](https://user-images.githubusercontent.com/22198227/61637060-3f01b500-ac6d-11e9-89d2-ee717746bf6b.png "Configuração - Boleto Bancário")
+
+---
+#### 5 - Status de Pedido
+
+Para facilitar o gerenciamento do pedido disponibilizamos a opção de mapeamento de Status.
+
+Os Status disponíveis são:
+
+- Status Iniciado (O pedido mudará automaticamente para este status quando a transação estiver marcada como Pagamento Pendente no PagSeguro)
+- Status Aprovado (O pedido mudará automaticamente para este status em caso de aprovação no PagSeguro)
+- Status Cancelado (O pedido mudará automaticamente para este status quando a transação for cancelada no PagSeguro)
+- Status Aguardando (O pedido mudará automaticamente para este status quando a transação estiver no status aguardando no PagSeguro)
+
+![](https://user-images.githubusercontent.com/22198227/61637073-40cb7880-ac6d-11e9-8c02-f794705f7a2d.png "Configuração - Status de Pedido")
+
+**`Atenção`**
+
+Exitem 02 formas de cancelar um pedido:
+
+**a)** Acesse o pedido desejado no painel do WooCommerce e clique no botão "Reembolso". Em seguida, defina o "Total Reembolsado" e clique no botão "Reembolso R$X,XX por Pagamento via PagSeguro" e em tempo real o módulo transmitirá a requisição para o PagSeguro.
+
+![](https://user-images.githubusercontent.com/22198227/61637069-4032e200-ac6d-11e9-99d7-4da6264c023f.png "Exemplo - Refund")
+
+**b)** Diretamente em sua conta no PagSeguro em "Extrato de Transações". Ao cancelar o pedido o PagSeguro irá transmitir para a sua loja a requisição de cancelamento.
+
+**https://pagseguro.uol.com.br/transaction/search.jhtml**
+
+---
+#### 6 - Habilitar logs do módulo
+
+Habilite a opção para que o módulo registre tudo o que é enviado e recebido entre a sua loja e o PagSeguro.
+
+![](https://user-images.githubusercontent.com/22198227/61637067-3f9a4b80-ac6d-11e9-89f1-d58d9e1b61df.png "Configuração - Habilitar logs do módulo")
+
+Para visualizar os registros de Logs clique no link Logs ou acesse "WooCommerce > Status do Sistema > Logs > selecione o log pagseguro-payment-xxxxx.log" e clique em "Visualizar" para analisar detalhes do que foi enviado e recebido entre a sua loja e o PagSeguro.
+
+![](https://user-images.githubusercontent.com/22198227/61637066-3f9a4b80-ac6d-11e9-92ce-5358b015d525.png "Configuração - Visualização dos Logs")
+
+---
+## CHANGELOG
+
+**1.0.0**
+
+- Primeira versão do módulo PagSeguro;
